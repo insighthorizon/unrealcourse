@@ -1,0 +1,34 @@
+How much planning should we do?
+
+Define the motional problem the game solves
+       I want a mental challenge
+       I want to feel smart / prove myself
+       I miss word puzzles
+       I want to challenge (feel superior to) someone'
+       Etc
+
+Chose concept, rules & requirements
+      This si a "guess the isogram" game
+      An isogram is word with no repeating letters
+      The user has a limited number of guesses
+      After each guess the computer outputs the number of bulls and cows
+      (bull = ritght letter on right place, cow = right letter on wrong place)
+
+      Requirements: -inputs: text (isogram guess)
+      		    -outputs: text(number of bulls, cows, game result, instructions)
+		    -tasks of the user - writting guesses attemting to guess the isogram
+		    -performance limits worth mentioning? - no, maybe memory size of vocabulary
+		    -what assets (art,sound, story): isogram vocabulary
+		    -code to help the player make a valid guess (is isogram?, lowecase/upercase, valid length)
+		    -code to check the number of bulls and cows in the guess
+		    -code to keep track of valid guesses
+		    -user selectable word length, difficulty
+		    -providing a time limit
+		    -checking the users guess
+		    -a hint system - spend a trun for a hint
+Start to think about the architecture
+
+
+Copy as much as possible into the code!
+
+Document now what may change later
