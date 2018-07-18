@@ -3,26 +3,71 @@
 
 using namespace std; // using namespace - danger of namespace clash
 
+void PrintIntro();
+void PlayGame();
+string GetGuess();
+void PrintGuessBack(string Guess);
+bool AskToPlayAgain();
+
+/* entry point for our application */
 int main()
 {
-  /* Introduce the game */
+  PrintIntro();
+  PlayGame();
+  cout << AskToPlayAgain() << endl;
+  return 0; // exit the application
+}
+
+
+/* introduce the game */
+void PrintIntro()
+{
   constexpr int WORD_LENGTH = 5;
   cout << "Welcome to Bulls and Cows, a fun word game." << endl;
   cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?" << endl;
   cout << endl;
+  return;
+}
 
+void PlayGame()
+{
+  /* loop for the number of turns asking for guesses */
+  constexpr int NUMBER_OF_TURNS = 5;
   string Guess = "";
-  //get a guess from the player
-  cout << "Enter your guess please: ";
-  getline(cin, Guess);
-  // repeat the guess back to them
-  cout << "Here is your guess: " << Guess << endl;
+  for(int count = 0; count < NUMBER_OF_TURNS; count++)
+    {
+      Guess = GetGuess();
+      PrintGuessBack(Guess);
+      cout << endl;
+    }
+  return;
+}
 
-  //get a guess from the player
+/* get a guess from the player */
+string GetGuess()
+{
+  string Guess = "";
   cout << "Enter your guess please: ";
   getline(cin, Guess);
-  // repeat the guess back to them
-  cout << "Here is your guess: " << Guess << endl;
+  return Guess;
+}
+
+/* reapeat guess back to player */
+void PrintGuessBack(string Guess)
+{
+  cout << "Here is your guess: " << Guess;
+  cout << endl;
+  return;
+}
+
+bool AskToPlayAgain()
+{
+  string Response = "";
+  while(Response[0] != 'y' && Response[0] != 'Y' && Response[0] != 'n' && Response[0] != 'N')
+    {
+      cout << "Do you want to play again?- yes/no: ";
+      getline(cin, Response);
+    }
   
-  return 0;
+  return (Response[0] == 'y') || (Response[0] == 'Y');
 }
