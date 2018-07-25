@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class FBullCowGame
 {
@@ -6,8 +7,8 @@ class FBullCowGame
   void Reset(); // TODO make a more rich return value
   int GetMaxTries();
   int GetCurrentTry();
-  void SetGuess(string);
-  bool CheckGuessValidity(string); // TODO make a more rich return value
+  void SetGuess(std::string);
+  bool CheckGuessValidity(std::string); // TODO make a more rich return value
   void AnalyseGuess();
   int GetBulls();
   int GetCows();
