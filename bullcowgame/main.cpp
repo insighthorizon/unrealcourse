@@ -1,5 +1,6 @@
 #include <iostream> // to get access to cout, std::cin methods and << operator
 #include <string> // to get acces to >> operator
+#include "FBullCowGame.h"
 
 void PrintIntro();
 void PlayGame();
@@ -33,6 +34,7 @@ void PrintIntro()
 
 void PlayGame()
 {
+  FBullCowGame BCGame; // instantiate a new game
   /* loop for the number of turns asking for guesses */
   constexpr int NUMBER_OF_TURNS = 5;
   std::string Guess = "";

@@ -1,6 +1,6 @@
 #include "FBullCowGame.h"
 
-void FBUllCowGame::Reset()
+void FBullCowGame::Reset()
 {
   return;
 }
@@ -18,7 +18,7 @@ void FBullCowGame::SetGuess(std::string)
 }
 bool FBullCowGame::CheckGuessValidity(std::string)
 {
-  retrun false;
+  return false;
 }
 void FBullCowGame::AnalyseGuess()
 {
