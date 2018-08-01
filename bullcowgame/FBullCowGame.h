@@ -17,6 +17,9 @@ class FBullCowGame
   bool IsGameWon() const;
   bool IsGameLost() const;
   int GetHint();
+
+
+
   
   // ^^ Please try and ignore this and focus on the interfrace above ^^  
  private:

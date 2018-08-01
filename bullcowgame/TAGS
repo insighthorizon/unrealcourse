@@ -1,33 +1,36 @@
 
-FBullCowGame.cpp,445
-void FBullCowGame::Reset(3,27
-int FBullCowGame::GetMaxTries(7,68
-int FBullCowGame::GetCurrentTry(11,125
-void FBullCowGame::SetGuess(15,175
-bool FBullCowGame::CheckGuessValidity(19,230
-void FBullCowGame::AnalyseGuess(23,301
-int FBullCowGame::GetBulls(27,349
-int FBullCowGame::GetCows(31,394
-bool FBullCowGame::IsGameOver(35,438
-bool FBullCowGame::IsGameWon(39,490
-bool FBullCowGame::IsGameLost(43,541
-int FBullCowGame::GetHint(47,593
+FBullCowGame.cpp,480
+FBullCowGame::FBullCowGame(3,27
+void FBullCowGame::Reset(5,70
+int FBullCowGame::GetMaxTries(13,191
+int FBullCowGame::GetCurrentTry(14,252
+void FBullCowGame::SetGuess(16,318
+bool FBullCowGame::CheckGuessValidity(20,373
+void FBullCowGame::AnalyseGuess(24,444
+int FBullCowGame::GetBulls(29,493
+int FBullCowGame::GetCows(30,542
+bool FBullCowGame::IsGameOver(32,591
+bool FBullCowGame::IsGameWon(33,647
+bool FBullCowGame::IsGameLost(34,702
+int FBullCowGame::GetHint(35,758
 
 game_design_document.txt,34
        I want to challenge 7,180
 
 FBullCowGame.h,128
 class FBullCowGame4,32
-  int MyCurrentTry;FBullCowGame::MyCurrentTry22,492
-  int MyMaxTries FBullCowGame::MyMaxTries23,512
+  int MyCurrentTry;FBullCowGame::MyCurrentTry27,744
+  int MyMaxTries;FBullCowGame::MyMaxTries28,764
 
 main.cpp,179
 FBullCowGame BCGame;11,279
 int main(14,365
 void PrintIntro(28,532
 void PlayGame(37,802
-std::string GetGuess(54,1137
-void PrintGuessBack(63,1314
-bool AskToPlayAgain(70,1442
+std::string GetGuess(54,1154
+void PrintGuessBack(63,1369
+bool AskToPlayAgain(70,1497
+
+a.out,0
 
 indexTags.sh,0
