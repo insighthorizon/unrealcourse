@@ -8,7 +8,7 @@ Define the motional problem the game solves
        Etc
 
 Chose concept, rules & requirements
-      This si a "guess the isogram" game
+      This is a "guess the isogram" game
       An isogram is word with no repeating letters
       The user has a limited number of guesses
       After each guess the computer outputs the number of bulls and cows
