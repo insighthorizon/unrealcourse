@@ -4,6 +4,14 @@
 using FString = std::string;
 using int32 = int;
 
+// all values initialized to zero
+struct BullCowCount
+{
+  int32 Bulls = 0;
+  int32 Cows = 0;
+};
+
+
 class FBullCowGame
 {
  public:
@@ -13,7 +21,7 @@ class FBullCowGame
   int32 GetCurrentTry() const;
   void SetGuess(FString);
   bool CheckGuessValidity(FString); // TODO make a more rich return value
-  // provide a method for counting bulls & cows, and increasing turn number
+  BullCowCount SubmitGuess(FString);
   
   void AnalyseGuess();
   int32 GetBulls() const;
@@ -31,4 +39,5 @@ class FBullCowGame
   // see constructor for initialization
   int32 MyCurrentTry;
   int32 MyMaxTries;
+  FString MyHiddenWord;
 };
