@@ -4,11 +4,18 @@
 using FString = std::string;
 using int32 = int;
 
-// all values initialized to zero
-struct BullCowCount
+struct FBullCowCount
 {
-  int32 Bulls = 0;
+  int32 Bulls = 0; // all values initialized to zero
   int32 Cows = 0;
+};
+
+enum class EWordStatus // use class to prevent redeclaration (for example OK)
+{
+  OK,
+    Not_Isogram,
+    Wrong_Length,
+    Illegal_Chars,
 };
 
 
@@ -19,9 +26,10 @@ class FBullCowGame
   void Reset(); // TODO make a more rich return value
   int32 GetMaxTries() const; // const prevents this function from having functionality of changing any member variables (MyCurrentTry, MyMaxTries...) - for safety
   int32 GetCurrentTry() const;
+  int32 GetHiddenWordLength() const;
   void SetGuess(FString);
-  bool CheckGuessValidity(FString); // TODO make a more rich return value
-  BullCowCount SubmitGuess(FString);
+  EWordStatus CheckGuessValidity(FString) const;
+  FBullCowCount SubmitGuess(FString Guess);
   
   void AnalyseGuess();
   int32 GetBulls() const;
