@@ -10,12 +10,12 @@ struct FBullCowCount
   int32 Cows = 0;
 };
 
-enum class EWordStatus // use class to prevent redeclaration (for example OK)
+enum class EGuessStatus // use class to prevent redeclaration (for example OK)
 {
   OK,
     Not_Isogram,
     Wrong_Length,
-    Illegal_Chars,
+    Not_Lowercase,
 };
 
 
@@ -28,8 +28,8 @@ class FBullCowGame
   int32 GetCurrentTry() const;
   int32 GetHiddenWordLength() const;
   void SetGuess(FString);
-  EWordStatus CheckGuessValidity(FString) const;
-  FBullCowCount SubmitGuess(FString Guess);
+  EGuessStatus CheckGuessValidity(FString) const;
+  FBullCowCount SubmitGuess(FString);
   
   void AnalyseGuess();
   int32 GetBulls() const;

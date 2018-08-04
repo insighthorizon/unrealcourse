@@ -47,26 +47,25 @@ void PlayGame()
   int32 MaxTries = BCGame.GetMaxTries();
   
   /* loop for the number of turns asking for guesses */
-  FText Guess = "";
-  // TODO change from FOR to WHILE loop once we are validating tries
-  for(int32 count = 0; count < MaxTries; count++)
+  for(int32 count = 0; count < MaxTries; count++) // TODO change from FOR to WHILE loop once we are validating tries
     {
-      Guess = GetGuess(); // TODO make loop checking guess validity (dont accept bullshit quess)
+      FText Guess = GetGuess();
+
+      EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
+      
       // submit valid guess to the game and receive counts
       FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
       // print number of bulls and cows
       std::cout << "Bulls = " << BullCowCount.Bulls;
       std::cout << " Cows = " << BullCowCount.Cows << std::endl;
-      
       std::cout << std::endl;
     }
-  // TODO summarize game
   
+  // TODO summarize game
   return;
 }
 
-/* get a guess from the player */
-FText GetGuess()
+FText GetGuess() // TODO change to GetValidGuess
 {
   FText Guess = "";
   std::cout << "Try " << BCGame.GetCurrentTry() << ", enter your guess please: ";
