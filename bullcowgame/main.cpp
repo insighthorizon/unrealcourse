@@ -11,7 +11,7 @@ using int32 = int;
 
 void PrintIntro();
 void PlayGame();
-FText GetGuess();
+FText GetValidGuess();
 void PrintGuessBack(FText Guess);
 bool AskToPlayAgain();
 
@@ -49,28 +49,45 @@ void PlayGame()
   /* loop for the number of turns asking for guesses */
   for(int32 count = 0; count < MaxTries; count++) // TODO change from FOR to WHILE loop once we are validating tries
     {
-      FText Guess = GetGuess();
-
-      EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
+      FText Guess = GetValidGuess();
       
       // submit valid guess to the game and receive counts
       FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
-      // print number of bulls and cows
+
       std::cout << "Bulls = " << BullCowCount.Bulls;
-      std::cout << " Cows = " << BullCowCount.Cows << std::endl;
-      std::cout << std::endl;
+      std::cout << " Cows = " << BullCowCount.Cows << "\n\n";
     }
   
   // TODO summarize game
   return;
 }
 
-FText GetGuess() // TODO change to GetValidGuess
+// loop continually until the user gives a valid guess
+FText GetValidGuess()
 {
-  FText Guess = "";
-  std::cout << "Try " << BCGame.GetCurrentTry() << ", enter your guess please: ";
-  getline(std::cin, Guess);
-  return Guess;
+  EGuessStatus Status = EGuessStatus::Invalid_Status;
+  do {
+    std::cout << "Try " << BCGame.GetCurrentTry() << ", enter your guess please: ";
+    FText Guess = "";
+    getline(std::cin, Guess); //  get a guess from the player
+
+    Status = BCGame.CheckGuessValidity(Guess);
+    switch (Status)
+      {
+      case EGuessStatus::Wrong_Length:
+	std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n";
+	break;
+      case EGuessStatus::Not_Isogram:
+	std::cout << "Please enter a word without repeating letters.\n";
+	break;
+      case EGuessStatus::Not_Lowercase:
+	std::cout << "Please enter only lowercase characters.\n";      
+	break;
+      default:
+	return Guess;  
+      }
+    std::cout << std::endl;
+  } while (Status != EGuessStatus::OK); // keep looping until we get no error
 }
 
 

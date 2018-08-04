@@ -37,22 +37,22 @@ class FBullCowGame22,325
   int32 MyMaxTries;FBullCowGame::MyMaxTries49,1115
   FString MyHiddenWord;FBullCowGame::MyHiddenWord50,1135
 
-main.cpp,184
+main.cpp,189
 using FText 9,364
 using int32 10,391
-FBullCowGame BCGame;18,523
-int main(21,609
-void PrintIntro(35,776
-void PlayGame(44,1043
-FText GetGuess(68,1760
-bool AskToPlayAgain(77,1961
+FBullCowGame BCGame;18,528
+int main(21,614
+void PrintIntro(35,781
+void PlayGame(44,1048
+FText GetValidGuess(73,1859
+bool AskToPlayAgain(82,2033
 
 a.out,74
-HH17,13283
-A62,14059
-,H63,14091
-,H64,14123
-A81,14370
-A85,14444
+HH21,13283
+A66,14059
+,H67,14091
+,H68,14123
+A85,14370
+A89,14444
 
 indexTags.sh,0

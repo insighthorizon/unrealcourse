@@ -11,12 +11,13 @@ struct FBullCowCount
 };
 
 enum class EGuessStatus // use class to prevent redeclaration (for example OK)
-{
-  OK,
-    Not_Isogram,
-    Wrong_Length,
-    Not_Lowercase,
-};
+  {
+    Invalid_Status,
+      OK,
+      Not_Isogram,
+      Wrong_Length,
+      Not_Lowercase,
+      };
 
 
 class FBullCowGame
