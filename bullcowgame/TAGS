@@ -1,58 +1,49 @@
 
-FBullCowGame.cpp,642
+FBullCowGame.cpp,415
 using FString 3,27
 using int32 4,56
 FBullCowGame::FBullCowGame(6,76
 void FBullCowGame::Reset(7,118
-int32 FBullCowGame::GetMaxTries(17,313
-int32 FBullCowGame::GetCurrentTry(18,376
-int32 FBullCowGame::GetHiddenWordLength(19,443
-FBullCowCount FBullCowGame::SubmitGuess(22,594
-void FBullCowGame::SetGuess(52,1383
-EGuessStatus FBullCowGame::CheckGuessValidity(56,1434
-void FBullCowGame::AnalyseGuess(76,1912
-int32 FBullCowGame::GetBulls(81,1961
-int32 FBullCowGame::GetCows(82,2012
-bool FBullCowGame::IsGameOver(84,2063
-bool FBullCowGame::IsGameWon(85,2119
-bool FBullCowGame::IsGameLost(86,2174
-int32 FBullCowGame::GetHint(87,2230
+int32 FBullCowGame::GetMaxTries(18,333
+int32 FBullCowGame::GetCurrentTry(19,396
+int32 FBullCowGame::GetHiddenWordLength(20,463
+bool FBullCowGame::IsGameWon(21,545
+FBullCowCount FBullCowGame::SubmitValidGuess(24,674
+EGuessStatus FBullCowGame::CheckGuessValidity(55,1478
+int32 FBullCowGame::GetHint(78,1959
 
 game_design_document.txt,34
        I want to challenge 7,180
 
-FBullCowGame.h,560
+FBullCowGame.h,678
 using FString 4,32
 using int32 5,61
 struct FBullCowCount7,81
   int32 Bulls FBullCowCount::Bulls9,104
   int32 Cows FBullCowCount::Cows10,157
 enum class EGuessStatus 13,179
-  OK,EGuessStatus::OK15,260
-    Not_Isogram,EGuessStatus::Not_Isogram16,266
-    Wrong_Length,EGuessStatus::Wrong_Length17,283
-    Not_Lowercase,EGuessStatus::Not_Lowercase18,301
-class FBullCowGame22,325
-  int32 MyCurrentTry;FBullCowGame::MyCurrentTry48,1093
-  int32 MyMaxTries;FBullCowGame::MyMaxTries49,1115
-  FString MyHiddenWord;FBullCowGame::MyHiddenWord50,1135
+    Invalid_Status,EGuessStatus::Invalid_Status15,262
+      OK,EGuessStatus::OK16,282
+      Not_Isogram,EGuessStatus::Not_Isogram17,292
+      Wrong_Length,EGuessStatus::Wrong_Length18,311
+      Not_Lowercase,EGuessStatus::Not_Lowercase19,331
+class FBullCowGame23,363
+  int32 MyCurrentTry;FBullCowGame::MyCurrentTry46,1043
+  int32 MyMaxTries;FBullCowGame::MyMaxTries47,1065
+  FString MyHiddenWord;FBullCowGame::MyHiddenWord48,1085
+  bool bGameIsWon;FBullCowGame::bGameIsWon49,1109
 
-main.cpp,189
+main.cpp,221
 using FText 9,364
 using int32 10,391
-FBullCowGame BCGame;18,528
-int main(21,614
-void PrintIntro(35,781
-void PlayGame(44,1048
-FText GetValidGuess(73,1859
-bool AskToPlayAgain(82,2033
+FBullCowGame BCGame;19,553
+int main(22,639
+void PrintIntro(36,806
+void PlayGame(45,1077
+FText GetValidGuess(69,1748
+void PrintGameSummary(97,2625
+bool AskToPlayAgain(104,2768
 
-a.out,74
-HH21,13283
-A66,14059
-,H67,14091
-,H68,14123
-A85,14370
-A89,14444
+a.out,0
 
 indexTags.sh,0
