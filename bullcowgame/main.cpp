@@ -14,6 +14,7 @@ using int32 = int;
 // function prototypes as outside a class
 void PrintIntro();
 void PlayGame();
+int32 GetValidWordLength();
 FText GetValidGuess();
 void PrintGuessBack(FText Guess);
 void PrintGameSummary();
@@ -62,7 +63,8 @@ void PrintIntro()
 void PlayGame()
 {
   BCGame.Reset();
-  BCGame.SetValidDifficulty();  
+  BCGame.SetValidWordLength(GetValidWordLength());
+  std::cout << "\nGuess the  " << BCGame.GetHiddenWordLength() << " letter hidden word!\n";
   int32 MaxTries = BCGame.GetMaxTries();
   
   while ( !BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries )
@@ -127,3 +129,27 @@ bool AskToPlayAgain()
   return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
+int32 GetValidWordLength()
+{
+  int32 WordLength = 0;
+  FText input = "";
+  FRange range = BCGame.GetLengthRange();
+  while ( (WordLength > range.Max ) || (WordLength <  range.Min) )
+    {
+      WordLength = 0;
+      std::cout << "Please choose length of hidden isogram between ";
+      std::cout << range.Min <<" and " << range.Max << std::endl;
+      getline(std::cin, input);
+
+      int32 exp = 1;
+       for (auto letter : input)
+	{
+	  if ( letter > '9' || letter < '0') { WordLength = 0; break; }
+	  WordLength += exp*(letter - '0');
+	  exp = 10*exp;
+	}
+
+    }
+
+  return WordLength;
+}

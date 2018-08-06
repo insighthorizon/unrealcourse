@@ -15,6 +15,12 @@ struct FBullCowCount
   int32 Bulls = 0;
   int32 Cows = 0;
 };
+struct FRange
+{
+  int32 Min = 0;
+  int32 Max = 0;
+};
+
 
 enum class EGuessStatus // use class to prevent redeclaration
   {
@@ -30,23 +36,23 @@ class FBullCowGame
 {
  public:
   FBullCowGame();
-  void Reset(); // TODO make a more rich return value
-  void SetValidDifficulty();
+  void Reset();
   
   int32 GetMaxTries() const; // const makes sure function doesn't change anything
   int32 GetCurrentTry() const;
+  FRange GetLengthRange() const;    
   int32 GetHiddenWordLength() const;
-  bool IsGameWon() const;    
   EGuessStatus CheckGuessValidity(FString) const;
+  bool IsGameWon() const;
+
+  void SetValidWordLength(int32);
   FBullCowCount SubmitValidGuess(FString);
   
-  int32 GetHint();
   
  private:
-  int32 difficulty;
+  int32 WordLength;
   TMap<int32, FString> LengthToHiddenWord;
-
-
+  TMap<int32, int32> WordLengthToMaxTries;  
   int32 MyCurrentTry;
   bool bGameIsWon;
 
