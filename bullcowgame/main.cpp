@@ -2,13 +2,16 @@
 This acts as the view in a MVC pattern, and is responsible for all user interaction.
 For game logic see the FBullCowGame class.
  */
+
 #include <iostream> // to get access to cout, std::cin methods and << operator
 #include <string> // to get acces to >> operator
 #include "FBullCowGame.h"
 
+// to make syntax Unreal friendly
 using FText = std::string;
 using int32 = int;
 
+// function prototypes as outside a class
 void PrintIntro();
 void PlayGame();
 FText GetValidGuess();
@@ -16,9 +19,10 @@ void PrintGuessBack(FText Guess);
 void PrintGameSummary();
 bool AskToPlayAgain();
 
-FBullCowGame BCGame; // instantiate a new game
 
-/* entry point for our application */
+FBullCowGame BCGame; // instantiate a new game, which we re-use across plays
+
+
 int main()
 {
   do
@@ -28,32 +32,43 @@ int main()
     }
   while(AskToPlayAgain());
 
-  return 0; // exit the application
+  return 0;
 }
 
 
-/* introduce the game */
 void PrintIntro()
 {
-  std::cout << "\n\nWelcome to Bulls and Cows, a fun word game." << std::endl;
-  std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
-  std::cout << " letter isogram I'm thinking of?" << std::endl;
-  std::cout << std::endl;
+
+  const char asciiArt[] = "  ____        _ _                              \n"
+" |  _ \\      | | |                             \n"
+" | |_) |_   _| | |___                          \n"
+" |  _ <| | | | | / __|                         \n"
+" | |_) | |_| | | \\__ \\                         \n"
+" |____/ \\__,_|_|_|___/ _____                   \n"
+"                 | |  / ____|                  \n"
+"   __ _ _ __   __| | | |     _____      _____  \n"
+"  / _` | '_ \\ / _` | | |    / _ \\ \\ /\\ / / __| \n"
+" | (_| | | | | (_| | | |___| (_) \\ V  V /\\__ \\ \n"
+"  \\__,_|_| |_|\\__,_|  \\_____\\___/ \\_/\\_/ |___/ \n"
+    "                                               \n";
+
+  
+  std::cout << "\n" << asciiArt << "\n";  
+  std::cout << "Can you guess the hidden isogram?\n";
   return;
 }
 
+// plays a single game to completion
 void PlayGame()
 {
   BCGame.Reset();
+  BCGame.SetValidDifficulty();  
   int32 MaxTries = BCGame.GetMaxTries();
   
-  // loop asking for guesses while the game
-  // is NOT won and there are still tries remaining
-  while ( !BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries ) // TODO change from FOR to WHILE
+  while ( !BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries )
     {
       FText Guess = GetValidGuess();
       
-      // submit valid guess to the game and receive counts
       FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
 
       std::cout << "Bulls = " << BullCowCount.Bulls;
@@ -65,31 +80,30 @@ void PlayGame()
   return;
 }
 
-// loop continually until the user gives a valid guess
+
 FText GetValidGuess()
 {
   FText Guess = "";
   EGuessStatus Status = EGuessStatus::Invalid_Status;
   do {
-    std::cout << "Try " << BCGame.GetCurrentTry() << ", enter your guess please: ";
+    std::cout << "Try " << BCGame.GetCurrentTry() << " of " << BCGame.GetMaxTries() << ", enter your guess please: ";
     getline(std::cin, Guess); //  get a guess from the player
     Status = BCGame.CheckGuessValidity(Guess);
     
     switch (Status)
       {
       case EGuessStatus::Wrong_Length:
-	std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n";
+	std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n\n";
 	break;
       case EGuessStatus::Not_Isogram:
-	std::cout << "Please enter a word without repeating letters.\n";
+	std::cout << "Please enter a word without repeating letters.\n\n";
 	break;
       case EGuessStatus::Not_Lowercase:
-	std::cout << "Please enter only lowercase characters.\n";      
+	std::cout << "Please enter only lowercase characters.\n\n";      
 	break;
       default:
 	{ /* assume the guess is valid */  }
       }
-    std::cout << std::endl;
   } while (Status != EGuessStatus::OK); // keep looping until we get no error
   return Guess;  
 }

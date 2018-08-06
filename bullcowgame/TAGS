@@ -1,49 +1,56 @@
 
-FBullCowGame.cpp,415
-using FString 3,27
-using int32 4,56
-FBullCowGame::FBullCowGame(6,76
-void FBullCowGame::Reset(7,118
-int32 FBullCowGame::GetMaxTries(18,333
-int32 FBullCowGame::GetCurrentTry(19,396
-int32 FBullCowGame::GetHiddenWordLength(20,463
-bool FBullCowGame::IsGameWon(21,545
-FBullCowCount FBullCowGame::SubmitValidGuess(24,674
-EGuessStatus FBullCowGame::CheckGuessValidity(55,1478
-int32 FBullCowGame::GetHint(78,1959
+FBullCowGame.cpp,571
+#define TMap 7,97
+using FString 8,119
+using int32 9,148
+FBullCowGame::FBullCowGame(11,168
+void FBullCowGame::Reset(13,232
+void FBullCowGame::SetValidDifficulty(25,641
+int32 FBullCowGame::GetCurrentTry(51,1257
+int32 FBullCowGame::GetHiddenWordLength(52,1324
+bool FBullCowGame::IsGameWon(53,1395
+int32 FBullCowGame::GetMaxTries(56,1457
+FBullCowCount FBullCowGame::SubmitValidGuess(62,1657
+EGuessStatus FBullCowGame::CheckGuessValidity(93,2364
+int32 FBullCowGame::GetHint(116,2758
+bool FBullCowGame::IsIsogram(121,2805
+bool FBullCowGame::IsLowercase(139,3239
 
 game_design_document.txt,34
        I want to challenge 7,180
 
-FBullCowGame.h,678
-using FString 4,32
-using int32 5,61
-struct FBullCowCount7,81
-  int32 Bulls FBullCowCount::Bulls9,104
-  int32 Cows FBullCowCount::Cows10,157
-enum class EGuessStatus 13,179
-    Invalid_Status,EGuessStatus::Invalid_Status15,262
-      OK,EGuessStatus::OK16,282
-      Not_Isogram,EGuessStatus::Not_Isogram17,292
-      Wrong_Length,EGuessStatus::Wrong_Length18,311
-      Not_Lowercase,EGuessStatus::Not_Lowercase19,331
-class FBullCowGame23,363
-  int32 MyCurrentTry;FBullCowGame::MyCurrentTry46,1043
-  int32 MyMaxTries;FBullCowGame::MyMaxTries47,1065
-  FString MyHiddenWord;FBullCowGame::MyHiddenWord48,1085
-  bool bGameIsWon;FBullCowGame::bGameIsWon49,1109
+FBullCowGame.h,762
+#define TMap 9,207
+using FString 10,229
+using int32 11,258
+struct FBullCowCount13,278
+  int32 Bulls FBullCowCount::Bulls15,301
+  int32 Cows FBullCowCount::Cows16,320
+enum class EGuessStatus 19,342
+    Invalid_Status,EGuessStatus::Invalid_Status21,408
+      OK,EGuessStatus::OK22,428
+      Not_Isogram,EGuessStatus::Not_Isogram23,438
+      Wrong_Length,EGuessStatus::Wrong_Length24,457
+      Not_Lowercase,EGuessStatus::Not_Lowercase25,477
+class FBullCowGame29,509
+  int32 difficulty;FBullCowGame::difficulty46,951
+  TMap<FBullCowGame::TMap47,971
+  TMap<int32, FString> LengthToHiddenWord;FBullCowGame::LengthToHiddenWord47,971
+  int32 MyCurrentTry;FBullCowGame::MyCurrentTry50,1016
+  bool bGameIsWon;FBullCowGame::bGameIsWon51,1038
 
-main.cpp,221
-using FText 9,364
-using int32 10,391
-FBullCowGame BCGame;19,553
-int main(22,639
-void PrintIntro(36,806
-void PlayGame(45,1077
-FText GetValidGuess(69,1748
-void PrintGameSummary(97,2625
-bool AskToPlayAgain(104,2768
+main.cpp,223
+using FText 11,399
+using int32 12,426
+FBullCowGame BCGame;23,631
+int main(26,710
+void PrintIntro(39,828
+void PlayGame(62,1672
+FText GetValidGuess(84,2134
+void PrintGameSummary(111,3023
+bool AskToPlayAgain(118,3188
 
-a.out,0
+a.out,24
+ |____/ \__,_39,32584
 
 indexTags.sh,0
