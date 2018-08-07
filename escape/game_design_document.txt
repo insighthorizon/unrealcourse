@@ -1,0 +1,19 @@
+	Concept
+	- escape the room
+	- you are awakaned in a locked room, unable to escape
+	- use environmental clues such as light and sound to determine what to do next
+	- trigger pressure plates and solve puzzles to progress towards the exit
+
+	Rules
+	- no lose condition (player should just have feeling that he must get out of the room,
+	or he's going to die here
+	- do whatever you can
+	- you win by exiting the room
+
+	Requirements
+	- Unreal's providet Starter Content pack (assets)
+	- C++ code and Blueprint to encode behaviour
+	- sound effects
+	- sketches for layout of room(s)
+	- sketches for how puzzles work
+	 
